@@ -89,21 +89,9 @@ Projeyi yerel ortamınızda çalıştırmak için:
 
 ---
 
-## 🤝 Katkıda Bulunma (Contributing)
+## 📄 Lisans ve Geliştirme
 
-PlayEngGround **açık kaynaklı** bir projedir! Yeni bir oyun fikri, kelime havuzu genişletmesi, hata düzeltmesi veya UI/UX iyileştirmesiyle katkıda bulunabilirsiniz:
-
-1. Bu depoyu Fork'layın.
-2. Yeni bir özellik dalı oluşturun (`git checkout -b feature/harika-yeni-oyun`).
-3. Değişikliklerinizi commit edin (`git commit -m 'feat: yeni oyun eklendi'`).
-4. Dalınıza push yapın (`git push origin feature/harika-yeni-oyun`).
-5. Bir **Pull Request** açın.
-
----
-
-## 📄 Lisans
-
-Bu proje açık kaynaklıdır ve [MIT Lisansı](LICENSE) altında geliştirilmektedir.
+Bu proje kişisel bir açık kaynak projesidir ve **Arda Coşgun** tarafından bağımsız olarak geliştirilmektedir. Kodlar şeffaflık, eğitim ve inceleme amacıyla herkese açıktır ([MIT Lisansı](LICENSE)). Dışarıdan Pull Request (katkı) kabul edilmemektedir; geri bildirim veya önerileriniz için doğrudan iletişime geçebilirsiniz.
 
 ---
 
