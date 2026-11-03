@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="PlayEngGround ile eğlenceli ve interaktif mini oyunlar oynayarak İngilizce öğrenin.">
+  <meta name="keywords"
+    content="playengground, english learning, word games, kelime oyunları, wordle, hangman, memory match, ingilizce">
+  <meta name="author" content="Arda Coşgun">
+  <link rel="canonical" href="https://playengground.online/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://playengground.online/">
+  <meta property="og:title" content="PlayEngGround | Interactive English Learning Games">
+  <meta property="og:description"
+    content="PlayEngGround ile eğlenceli ve interaktif mini oyunlar oynayarak İngilizce öğrenin.">
+  <meta property="og:image" content="icons/icon-v3-512.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://playengground.online/">
+  <meta name="twitter:title" content="PlayEngGround | Interactive English Learning Games">
+  <meta name="twitter:description"
+    content="PlayEngGround ile eğlenceli ve interaktif mini oyunlar oynayarak İngilizce öğrenin.">
+  <meta name="twitter:image" content="icons/icon-v3-512.png">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="PlayEngGround">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-v3.png">
+
+  <!-- Theme color for browser tab/status bar (Dark theme) -->
+  <meta name="theme-color" content="#0D0D14">
+  <meta name="msapplication-TileColor" content="#0D0D14">
+  <meta name="msapplication-TileImage" content="icons/icon-v3-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icons/icon-v3-192.png" />
+  <link rel="shortcut icon" href="icons/icon-v3-192.png" />
+
+  <title>PlayEngGround | Interactive English Learning Games</title>
+  <link rel="manifest" href="manifest-v2.json">
+
+  <!-- Tablet / Touchscreen / Stylus Blue Highlight & Accidental Text Selection Prevention -->
+  <style>
+    *,
+    *::before,
+    *::after {
+      -webkit-tap-highlight-color: transparent !important;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      -khtml-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+    }
+
+    input,
+    textarea {
+      -webkit-user-select: text !important;
+      -moz-user-select: text !important;
+      -ms-user-select: text !important;
+      user-select: text !important;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #0D0D14;
+      touch-action: manipulation;
+    }
+
+    flt-glass-pane,
+    flutter-view,
+    canvas {
+      -webkit-tap-highlight-color: transparent !important;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      user-select: none !important;
+      outline: none !important;
+    }
+
+    /* Invisible selection highlights if triggered by browser */
+    ::selection {
+      background: transparent !important;
+      color: inherit !important;
+    }
+
+    ::-moz-selection {
+      background: transparent !important;
+      color: inherit !important;
+    }
+  </style>
+
+  <script>
+    // Prevent accidental full-page selection flash when touching with stylus/finger on tablets
+    (function () {
+      document.addEventListener('selectstart', function (e) {
+        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+          return true;
+        }
+        e.preventDefault();
+        return false;
+      }, { passive: false });
+
+      document.addEventListener('selectionchange', function () {
+        var activeEl = document.activeElement;
+        if (!activeEl || (activeEl.tagName !== 'INPUT' && activeEl.tagName !== 'TEXTAREA')) {
+          var sel = window.getSelection ? window.getSelection() : null;
+          if (sel && !sel.isCollapsed) {
+            try {
+              sel.removeAllRanges();
+            } catch (err) { }
+          }
+        }
+      });
+    })();
+  </script>
+
+  <!-- PWA install bridge: beforeinstallprompt must be captured before Flutter boots -->
+  <script>
+    (function () {
+      var deferredPrompt = null;
+      var installed = false;
+      var listeners = [];
+      var ua = navigator.userAgent || '';
+      var isIos = /iPad|iPhone|iPod/.test(ua) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      var isAndroid = /Android/i.test(ua);
+
+      function notify() {
+        listeners.forEach(function (cb) { try { cb(); } catch (e) { } });
+      }
+
+      function isStandalone() {
+        return window.matchMedia('(display-mode: standalone)').matches ||
+          window.matchMedia('(display-mode: fullscreen)').matches ||
+          window.matchMedia('(display-mode: minimal-ui)').matches ||
+          window.matchMedia('(display-mode: window-controls-overlay)').matches ||
+          window.navigator.standalone === true;
+      }
+
+      window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        deferredPrompt = e;
+        notify();
+      });
+
+      window.addEventListener('appinstalled', function () {
+        deferredPrompt = null;
+        installed = true;
+        notify();
+      });
+
+      try {
+        window.matchMedia('(display-mode: standalone)').addEventListener('change', notify);
+      } catch (e) { }
+
+      window.pwaInstall = {
+        canPrompt: function () { return !!deferredPrompt; },
+        isIos: function () { return isIos; },
+        isAndroid: function () { return isAndroid; },
+        isInstalled: function () { return installed || isStandalone(); },
+        prompt: function () {
+          if (!deferredPrompt) return Promise.resolve('unavailable');
+          var p = deferredPrompt;
+          deferredPrompt = null;
+          p.prompt();
+          return p.userChoice
+            .then(function (choice) { notify(); return choice.outcome; })
+            .catch(function () { notify(); return 'error'; });
+        },
+        onChange: function (cb) { listeners.push(cb); }
+      };
+    })();
+  </script>
+
+  <!-- English-only TTS bridge locking voice strictly to English across all browsers (Chrome, Firefox, Opera, Safari, Edge) -->
+  <script>
+    (function () {
+      var cachedEnglishVoice = null;
+
+      function getVoicesSafe() {
+        if (!window.speechSynthesis) return [];
+        try {
+          return window.speechSynthesis.getVoices() || [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function findBestEnglishVoice() {
+        var voices = getVoicesSafe();
+        if (!voices || voices.length === 0) return null;
+
+        function isRobotic(name) {
+          return name.indexOf('zira') !== -1 || name.indexOf('david') !== -1 || name.indexOf('mark') !== -1 || name.indexOf('desktop') !== -1;
+        }
+
+        // 1. Google US English (Chrome's clean, articulate natural voice)
+        for (var i = 0; i < voices.length; i++) {
+          var v = voices[i];
+          var name = (v.name || '').toLowerCase();
+          var lang = (v.lang || '').toLowerCase().replace(/_/g, '-');
+          if (name.indexOf('google us english') !== -1 || (name.indexOf('google') !== -1 && lang === 'en-us')) {
+            return v;
+          }
+        }
+
+        // 2. Microsoft Natural Online voices (Edge / Windows neural natural voices)
+        for (var i = 0; i < voices.length; i++) {
+          var v = voices[i];
+          var name = (v.name || '').toLowerCase();
+          var lang = (v.lang || '').toLowerCase().replace(/_/g, '-');
+          if (lang.indexOf('en') === 0 && (name.indexOf('natural') !== -1 || name.indexOf('online') !== -1 || name.indexOf('jenny') !== -1 || name.indexOf('aria') !== -1)) {
+            return v;
+          }
+        }
+
+        // 3. Apple natural voices (Safari / macOS / iOS)
+        for (var i = 0; i < voices.length; i++) {
+          var v = voices[i];
+          var name = (v.name || '').toLowerCase();
+          if (name.indexOf('samantha') !== -1 || name.indexOf('karen') !== -1 || name.indexOf('daniel') !== -1 || name.indexOf('moira') !== -1) {
+            return v;
+          }
+        }
+
+        // 4. Any other Google English voice (Google UK, Google Australia, etc.)
+        for (var i = 0; i < voices.length; i++) {
+          var v = voices[i];
+          var name = (v.name || '').toLowerCase();
+          var lang = (v.lang || '').toLowerCase().replace(/_/g, '-');
+          if (lang.indexOf('en') === 0 && name.indexOf('google') !== -1) {
+            return v;
+          }
+        }
+
+        // 5. Standard non-robotic en-US or en-GB voices
+        for (var i = 0; i < voices.length; i++) {
+          var v = voices[i];
+          var lang = (v.lang || '').toLowerCase().replace(/_/g, '-');
+          var name = (v.name || '').toLowerCase();
+          if ((lang === 'en-us' || lang === 'en-gb') && !isRobotic(name)) {
+            return v;
+          }
+        }
+
+        // 6. Any non-robotic English voice
+        for (var i = 0; i < voices.length; i++) {
+          var v = voices[i];
+          var lang = (v.lang || '').toLowerCase().replace(/_/g, '-');
+          var name = (v.name || '').toLowerCase();
+          if (lang.indexOf('en') === 0 && !isRobotic(name)) {
+            return v;
+          }
+        }
+
+        // 7. Fallback en-US / en-GB
+        for (var i = 0; i < voices.length; i++) {
+          var v = voices[i];
+          var lang = (v.lang || '').toLowerCase().replace(/_/g, '-');
+          if (lang === 'en-us' || lang === 'en-gb' || lang === 'en-ca' || lang === 'en-au') {
+            return v;
+          }
+        }
+
+        // 8. Any voice starting with en
+        for (var i = 0; i < voices.length; i++) {
+          var v = voices[i];
+          var lang = (v.lang || '').toLowerCase().replace(/_/g, '-');
+          if (lang.indexOf('en') === 0) {
+            return v;
+          }
+        }
+
+        return null;
+      }
+
+      function ensureVoiceLoaded() {
+        if (!cachedEnglishVoice) {
+          cachedEnglishVoice = findBestEnglishVoice();
+        }
+        return cachedEnglishVoice;
+      }
+
+      if (window.speechSynthesis) {
+        ensureVoiceLoaded();
+        if (typeof window.speechSynthesis.onvoiceschanged !== 'undefined') {
+          window.speechSynthesis.onvoiceschanged = function () {
+            cachedEnglishVoice = findBestEnglishVoice();
+          };
+        }
+        window.speechSynthesis.addEventListener('voiceschanged', function () {
+          cachedEnglishVoice = findBestEnglishVoice();
+        });
+      }
+
+      var speakTimer = null;
+
+      window.playEngTts = {
+        speak: function (text, rate) {
+          if (!window.speechSynthesis || !text) return;
+          if (speakTimer) {
+            clearTimeout(speakTimer);
+            speakTimer = null;
+          }
+
+          try {
+            window.speechSynthesis.cancel();
+          } catch (e) { }
+
+          speakTimer = setTimeout(function () {
+            speakTimer = null;
+            try {
+              var u = new SpeechSynthesisUtterance(text);
+              // CRITICAL for non-Chrome browsers (Firefox, Opera, Safari):
+              // Explicitly set language tag so browser speech engine never falls back to host OS locale
+              u.lang = 'en-US';
+              u.rate = rate || 0.95;
+              u.pitch = 1.0;
+
+              var picked = ensureVoiceLoaded();
+              if (picked) {
+                u.voice = picked;
+                if (picked.lang) {
+                  u.lang = picked.lang;
+                }
+              }
+
+              if (window.speechSynthesis.paused) {
+                window.speechSynthesis.resume();
+              }
+
+              window.speechSynthesis.speak(u);
+            } catch (err) {
+              console.warn('TTS speak error:', err);
+            }
+          }, 30);
+        },
+        stop: function () {
+          if (speakTimer) {
+            clearTimeout(speakTimer);
+            speakTimer = null;
+          }
+          try {
+            if (window.speechSynthesis) window.speechSynthesis.cancel();
+          } catch (e) { }
+        }
+      };
+    })();
+  </script>
+
+  <script>
+    // Cross-version Streak Persistence & Recovery Guard (localStorage + 400-day Cookie Mirror)
+    (function () {
+      try {
+        var now = new Date();
+        var yyyy = String(now.getFullYear()).padStart(4, '0');
+        var mm = String(now.getMonth() + 1).padStart(2, '0');
+        var dd = String(now.getDate()).padStart(2, '0');
+        var todayStr = yyyy + '-' + mm + '-' + dd;
+
+        var yest = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+        var yYyyy = String(yest.getFullYear()).padStart(4, '0');
+        var yMm = String(yest.getMonth() + 1).padStart(2, '0');
+        var yDd = String(yest.getDate()).padStart(2, '0');
+        var yesterdayStr = yYyyy + '-' + yMm + '-' + yDd;
+
+        function readCookie(name) {
+          var match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+          return match ? decodeURIComponent(match[1]) : null;
+        }
+
+        function writeCookie(name, value) {
+          document.cookie = name + '=' + encodeURIComponent(value) + '; max-age=34560000; path=/; SameSite=Lax';
+        }
+
+        // Permanent Device ID synchronization across localStorage & Cookie
+        var devIdFromLs = localStorage.getItem('flutter.playengground_anon_device_id') ||
+          localStorage.getItem('playengground_anon_device_id') ||
+          localStorage.getItem('peg_device_id');
+        var devIdFromCookie = readCookie('peg_device_id');
+        var activeDeviceId = devIdFromLs || devIdFromCookie;
+
+        if (activeDeviceId) {
+          if (activeDeviceId.startsWith('"') && activeDeviceId.endsWith('"')) {
+            try { activeDeviceId = JSON.parse(activeDeviceId); } catch (e) { }
+          }
+          localStorage.setItem('flutter.playengground_anon_device_id', JSON.stringify(activeDeviceId));
+          localStorage.setItem('playengground_anon_device_id', activeDeviceId);
+          localStorage.setItem('peg_device_id', activeDeviceId);
+          writeCookie('peg_device_id', activeDeviceId);
+        }
+
+        function parseJsonSafe(raw) {
+          if (!raw) return null;
+          try {
+            var val = JSON.parse(raw);
+            if (typeof val === 'string') {
+              try { val = JSON.parse(val); } catch (e2) { }
+            }
+            return (val && typeof val === 'object') ? val : null;
+          } catch (e) {
+            return null;
+          }
+        }
+
+        var lsV2 = parseJsonSafe(localStorage.getItem('flutter.playengground_streak_v2'));
+        var lsPeg = parseJsonSafe(localStorage.getItem('peg_streak_v2'));
+        var ckPeg = parseJsonSafe(readCookie('peg_streak_v2'));
+
+        var rawCurr = parseInt(localStorage.getItem('flutter.playengground_streak_current') || '0', 10) || 0;
+        var rawBest = parseInt(localStorage.getItem('flutter.playengground_streak_best') || '0', 10) || 0;
+        var rawLast = localStorage.getItem('flutter.playengground_streak_last_date') || '';
+        if (rawLast.startsWith('"') && rawLast.endsWith('"')) {
+          try { rawLast = JSON.parse(rawLast); } catch (e) { }
+        }
+
+        var candidates = [
+          { current: rawCurr, best: rawBest, lastDate: rawLast },
+          lsV2,
+          lsPeg,
+          ckPeg
+        ];
+
+        var bestCandidate = { current: 0, best: 0, lastDate: '' };
+        for (var i = 0; i < candidates.length; i++) {
+          var c = candidates[i];
+          if (!c) continue;
+          var cCurr = parseInt(c.current, 10) || 0;
+          var cBest = parseInt(c.best, 10) || 0;
+          var cLast = (typeof c.lastDate === 'string') ? c.lastDate : '';
+          if (cBest > bestCandidate.best) bestCandidate.best = cBest;
+          var isRecent = (cLast === todayStr || cLast === yesterdayStr);
+          var bestIsRecent = (bestCandidate.lastDate === todayStr || bestCandidate.lastDate === yesterdayStr);
+          if ((isRecent && !bestIsRecent) || (isRecent === bestIsRecent && cCurr > bestCandidate.current)) {
+            bestCandidate.current = cCurr;
+            bestCandidate.lastDate = cLast;
+          }
+        }
+
+        if (bestCandidate.current > bestCandidate.best) {
+          bestCandidate.best = bestCandidate.current;
+        }
+
+        if (bestCandidate.current > 0 && bestCandidate.lastDate) {
+          var payload = JSON.stringify(bestCandidate);
+          localStorage.setItem('flutter.playengground_streak_current', String(bestCandidate.current));
+          localStorage.setItem('flutter.playengground_streak_best', String(bestCandidate.best));
+          localStorage.setItem('flutter.playengground_streak_last_date', JSON.stringify(bestCandidate.lastDate));
+          localStorage.setItem('flutter.playengground_streak_v2', JSON.stringify(payload));
+          localStorage.setItem('peg_streak_v2', payload);
+          writeCookie('peg_streak_v2', payload);
+        }
+
+        var origSetItem = localStorage.setItem.bind(localStorage);
+        localStorage.setItem = function (key, value) {
+          try {
+            if (key === 'flutter.playengground_streak_current' && (value === '0' || value === 0)) {
+              var existing = parseJsonSafe(localStorage.getItem('peg_streak_v2')) || parseJsonSafe(readCookie('peg_streak_v2'));
+              if (existing && existing.lastDate === todayStr && (parseInt(existing.current, 10) || 0) > 0) {
+                return;
+              }
+            }
+            origSetItem(key, value);
+            if (key === 'flutter.playengground_streak_v2') {
+              var parsed = parseJsonSafe(value);
+              if (parsed && (parseInt(parsed.current, 10) || 0) > 0) {
+                var cleanStr = JSON.stringify({
+                  current: parseInt(parsed.current, 10) || 0,
+                  best: parseInt(parsed.best, 10) || 0,
+                  lastDate: parsed.lastDate || todayStr
+                });
+                origSetItem('peg_streak_v2', cleanStr);
+                writeCookie('peg_streak_v2', cleanStr);
+              }
+            }
+          } catch (err) {
+            origSetItem(key, value);
+          }
+        };
+      } catch (e) {
+        console.warn('[Streak Guard] Error:', e);
+      }
+    })();
+
+    // Aggressively purge all browser caches on every page load
+    if ('caches' in window) {
+      caches.keys().then(function (names) {
+        for (var name of names) {
+          caches.delete(name);
+          console.log('[Cache Purge] Deleted cache:', name);
+        }
+      });
+    }
+
+    if ('serviceWorker' in navigator) {
+      // Unregister legacy flutter_service_worker.js if present, keep our sw.js intact
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        for (var registration of registrations) {
+          var scriptUrl = (registration.active && registration.active.scriptURL) ||
+            (registration.installing && registration.installing.scriptURL) ||
+            (registration.waiting && registration.waiting.scriptURL) || '';
+          if (scriptUrl && !scriptUrl.includes('sw.js')) {
+            registration.unregister().then(function (success) {
+              if (success) console.log('[SW] Unregistered stale service worker');
+            });
+          }
+        }
+      });
+
+      // Register our sw.js without forcing a mid-startup page reload
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' })
+          .then(function (registration) {
+            if (registration.waiting) {
+              registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+            }
+          }, function (err) {
+            console.log('[SW] Registration failed:', err);
+          });
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js?v=0.4.9" async></script>
+</body>
+
+</html>

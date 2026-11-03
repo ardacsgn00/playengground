@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "stats": {
+      ".read": true,
+      ".write": true
+    },
+    "users": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}

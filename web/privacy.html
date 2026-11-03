@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gizlilik Politikası • PlayEngGround</title>
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  <style>
+    body {
+      background-color: #0E0E1B;
+      color: #E2E8F0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 24px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #16162A;
+      border: 1px solid #2A2A4A;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    h1 {
+      color: #FFFFFF;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 0;
+    }
+    .badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10B981;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    h2 {
+      color: #38BDF8;
+      font-size: 18px;
+      margin-top: 24px;
+      border-bottom: 1px solid #2A2A4A;
+      padding-bottom: 6px;
+    }
+    p, li {
+      font-size: 14.5px;
+      color: #CBD5E1;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .highlight {
+      background: #1F1F38;
+      border-left: 4px solid #10B981;
+      padding: 14px 18px;
+      border-radius: 8px;
+      margin: 18px 0;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-top: 24px;
+      background: #10B981;
+      color: #FFFFFF;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 4px 0 #047857;
+    }
+    .back-btn:hover {
+      background: #059669;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>
+      <span>🛡️ Gizlilik Politikası</span>
+      <span class="badge">v0.4.9</span>
+    </h1>
+    <p><em>Son Güncelleme: 1 Kasım 2026 • PlayEngGround</em></p>
+
+    <div class="highlight">
+      <strong>Sıfır Kişisel Veri İlkesi:</strong> PlayEngGround, tamamen ücretsiz, reklamsız ve üyeliksiz bir İngilizce kelime ve gramer pratik platformudur. Adınız, e-postanız, parolanız veya kişisel kimliğiniz asla istenmez ve toplanmaz.
+    </div>
+
+    <h2>1. Toplanmayan Veriler (Kişisel Gizlilik Güvencesi)</h2>
+    <ul>
+      <li><strong>Kişisel Kimlik:</strong> Ad, soyad, e-posta, telefon numarası veya parola gibi hiçbir kişisel bilgi toplanmaz. Kayıt / giriş zorunluluğu yoktur.</li>
+      <li><strong>Konum Verisi:</strong> GPS veya hassas konum bilgisi kesinlikle alınmaz.</li>
+      <li><strong>Kamera ve Mikrofon:</strong> Kamera ve mikrofona erişilmez, hiçbir ses veya görüntü kaydı tutulmaz.</li>
+      <li><strong>Ödeme Bilgisi:</strong> Kredi kartı veya finansal veri toplanmaz; uygulama tamamen ücretsizdir.</li>
+      <li><strong>Kişisel Oyun Geçmişi:</strong> Hata Bankası kelimeleriniz ve ayar tercihleriniz yalnızca cihazınızın tarayıcı önbelleğinde (<code>localStorage</code>) yerel olarak saklanır.</li>
+    </ul>
+
+    <h2>2. Toplanan Anonim Teknik Veriler (Neden Toplanır?)</h2>
+    <p>Uygulamanın teknik kararlılığını sağlamak ve farklı ekran boyutlarında sorunsuz çalışmasını temin etmek amacıyla yalnızca anonim teknik veriler toplanır:</p>
+    <ul>
+      <li><strong>Anonim Cihaz Kimliği:</strong> Tamamen rastgele üretilen bir oturum UUID'si (tekil ziyaretçi sayımı için).</li>
+      <li><strong>Cihaz & İşletim Sistemi:</strong> Mobil, tablet veya masaüstü uyumluluğunu test etmek için cihaz türü ve işletim sistemi (Windows, Android, iOS, macOS).</li>
+      <li><strong>Tarayıcı & Ekran Çözünürlüğü:</strong> Arayüzün taşmasını engellemek ve TTS telaffuz desteğini denetlemek amacıyla.</li>
+      <li><strong>Anonim Ziyaret Sayacı:</strong> Genel platform sunucu yoğunluğunu ölçmek için anonim zaman damgası.</li>
+    </ul>
+
+    <h2>3. Seslendirme (TTS) Özelliği</h2>
+    <p>İngilizce kelime ve deyim telaffuzları, cihazınızın ve tarayıcınızın kendi yerel Konuşma Sentezi (Web Speech Synthesis API) motoru tarafından istemci tarafında üretilir. Ses verileriniz dinlenmez veya kaydedilmez.</p>
+
+    <h2>4. Veri Güvenliği ve Üçüncü Taraflar</h2>
+    <p>Teknik analiz verileri Google Firebase altyapısında SSL şifrelemeli olarak korunur. Hiçbir veri reklam verenlerle veya üçüncü taraf şirketlerle paylaşılmaz, satılmaz veya ticarileştirilmez.</p>
+
+    <h2>5. Verilerinizi Sıfırlama ve Kontrol Hakkı</h2>
+    <p>Cihazınızda yerel olarak saklanan Hata Bankası kayıtlarını ve tercihlerinizi, tarayıcınızın "Önbelleği ve Site Verilerini Temizle" seçeneğini kullanarak dilediğiniz an silebilirsiniz.</p>
+
+    <h2>6. İletişim</h2>
+    <p>Geliştirici: <strong>Arda Coşgun</strong><br>Gizlilik politikasıyla ilgili tüm soru ve önerileriniz için portföy sitemiz (<a href="https://ardacosgun.web.app" target="_blank" style="color: #38BDF8; text-decoration: underline;">ardacosgun.web.app</a>) üzerinden doğrudan iletişime geçebilirsiniz.</p>
+
+    <a href="/" class="back-btn">← Uygulamaya Dön</a>
+  </div>
+</body>
+</html>
+

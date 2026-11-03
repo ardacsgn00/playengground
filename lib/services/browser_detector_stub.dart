@@ -1,0 +1,2 @@
+String getBrowserName() => 'Bilinmiyor';
+

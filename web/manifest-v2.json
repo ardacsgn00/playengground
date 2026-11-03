@@ -1,0 +1,25 @@
+{
+  "name": "PlayEngGround",
+  "short_name": "PlayEngGround",
+  "id": "/?v=2",
+  "start_url": "/?v=2",
+  "display": "standalone",
+  "background_color": "#0D0D14",
+  "theme_color": "#0D0D14",
+  "description": "PlayEngGround: Eğlenceli ve interaktif İngilizce kelime oyunları platformu.",
+  "orientation": "any",
+  "prefer_related_applications": false,
+  "categories": ["education", "games"],
+  "icons": [
+    {
+      "src": "icons/icon-v3-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-v3-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
