@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://playengground-5cf88.web.app"><img src="https://img.shields.io/badge/Canl%C4%B1%20Web%20App-playengground-blue?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo" /></a>
+  <a href="https://playengground.online"><img src="https://img.shields.io/badge/Canl%C4%B1%20Web%20App-playengground.online-blue?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Live Demo" /></a>
   <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white" alt="Flutter" />
   <img src="https://img.shields.io/badge/Firebase-%23039BE5.svg?style=for-the-badge&logo=firebase" alt="Firebase" />
   <img src="https://img.shields.io/badge/Open%20Source-%E2%99%A5-brightgreen?style=for-the-badge" alt="Open Source" />
@@ -96,5 +96,5 @@ Bu proje kişisel bir açık kaynak projesidir ve **Arda Coşgun** tarafından b
 ---
 
 <p align="center">
-  Geliştirici: <b>Arda Coşgun</b> • <a href="https://ardacosgun.web.app">Portföy</a> • <a href="https://playengground-5cf88.web.app">PlayEngGround Canlı Sürüm</a>
+  Geliştirici: <b>Arda Coşgun</b> • <a href="https://ardacosgun.web.app">Portföy</a> • <a href="https://playengground.online">PlayEngGround Canlı Sürüm</a>
 </p>
